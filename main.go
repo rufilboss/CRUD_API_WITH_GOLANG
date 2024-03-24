@@ -27,14 +27,14 @@ type Director struct {
 var movies []Movie
 
 // Returns a list of the avalible movies
-func getMovies(w http.ResponseWriter, r "http.Request")  {
+func getMovies(w http.ResponseWriter, r *http.Request)  {
 	w.Header().Set("Content-Type", "application/json")
 	// Return the list of all the movies
 	json.NewEncoder(w).Encoder(movies)
 }
 
 // Delete a movie from the movies list
-func deleteMovie(w http.ResponseWriter, r "http.Request") {
+func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	for index, item := range movies {
@@ -48,7 +48,7 @@ func deleteMovie(w http.ResponseWriter, r "http.Request") {
 }
 
 // 
-func getMovie(w http.ResponseWriter, r "http.Request"){
+func getMovie(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	for _, item := range.movies {
@@ -59,6 +59,10 @@ func getMovie(w http.ResponseWriter, r "http.Request"){
 	}
 }
 
+// Create a new movie
+func createMovie(w http.Response, r *http.Request){
+
+}
 
 func main() {
 	r := mux.NewRouter()
