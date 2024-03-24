@@ -1,2 +1,3 @@
-# CRUD_API_WITH_GOLANG
+# GOLANG CRUD API
+
 A CRUD API built with golang
