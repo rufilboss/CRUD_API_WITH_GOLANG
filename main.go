@@ -94,8 +94,8 @@ func main() {
 	r := mux.NewRouter()
 
 	// Make these movies available on startup
-	movies = append(movies, Movie{ID: "1", Isbn: "438227", Title: "Movie one", Director: &Director{Firstname: "Ilyas", Lastname: "Rufai"}})
-	movies = append(movies, Movie{ID: "2", Isbn: "438228", Title: "Movie two", Director: &Director{Firstname: "Maryam", Lastname: "Rufai"}})
+	movies = append(movies, Movie{ID: "1", Isbn: "438227", Title: "Movie one", Director: &Director{Firstname: "Wide", Lastname: "Life"}})
+	movies = append(movies, Movie{ID: "2", Isbn: "438228", Title: "Movie two", Director: &Director{Firstname: "Life", Lastname: "Hacks"}})
 	
 	// Routes functions
 	r.HandleFunc("/movies", getMovies).Methods("GET")
