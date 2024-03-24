@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"enocoding/json"
+	"encoding/json"
 	"math/rand"
 	"strconv"
 
@@ -51,7 +51,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 func getMovie(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
-	for _, item := range.movies {
+	for _, item := range.movies { // Check here if any error occur
 		if item.ID == params["id"]{
 			json.NewEncoder(w).Encode(item)
 			return
@@ -61,7 +61,7 @@ func getMovie(w http.ResponseWriter, r *http.Request){
 
 // Create a new movie
 func createMovie(w http.Response, r *http.Request){
-	w.Header.set("Content-Type", "application/json")
+	w.Header.Set("Content-Type", "application/json")
 	var movie Movie
 	_ = json.NewDecoder(r.Body).Decode(&movie)
 	movie.ID = strconv.Itoa(rand.Intn(10000000000))
@@ -70,6 +70,24 @@ func createMovie(w http.Response, r *http.Request){
 }
 
 // Update the movie list
+func updateMovie(w http.ResponseWriter, r *http.Request){
+	// Settng the content type
+	w.Header.Set("Content-Type", "application/json")
+	params = mux.Vars(r)
+	// Loop over the movie lists
+	for index, item := range movies{
+		if item.ID == params["id"]{
+			movies = append(movies[:index], movies[index+1:]...)
+			var movie Movie
+			_ = json.NewDecoder(r.Body).Decode(&movie)
+			movie.ID = params["id"]
+			movies = append(movies, movie)
+			json.NewEncoder(w).Encoder(movie)
+		}
+	}
+	// Delete the movie
+}
+
 
 
 func main() {
