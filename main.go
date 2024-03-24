@@ -11,6 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Using strut instead of database
 type Movie struct {
 	ID string `json:"id"`
 	Isbn string `json:"isbn"`
@@ -46,7 +47,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(movies)
 }
 
-// 
+// Get movie by id
 func getMovie(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -85,7 +86,6 @@ func updateMovie(w http.ResponseWriter, r *http.Request){
 			return
 		}
 	}
-	// Delete the movie
 }
 
 
